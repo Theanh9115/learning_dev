@@ -1,4 +1,4 @@
-#Learning Dev
+# Learning Dev
 A personal learning repository for developing **Software Engineering skills**.
 
 ## 📚 What I'm Learning
