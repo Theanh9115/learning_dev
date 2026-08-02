@@ -9,8 +9,8 @@ A personal learning repository for developing **Software Engineering skills**.
 ## 📂 Repository Structure
 
 learning-dev/
-|
-|-odin-recipes
+│
+└── odin-recipes/
 
 The structure may evolve as I learn new topics.
 
