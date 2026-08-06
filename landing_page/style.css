@@ -1,0 +1,181 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+    font-family: roboto;
+}
+
+header {
+    padding: 20px 0px;
+    background-color: #1F2937;
+}
+
+header nav {
+    display: flex;
+}
+
+.content {
+    margin: 0px 270px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    width: auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content h1{
+    font-size: 48px;
+    font-weight: 900;
+}
+
+.content p{
+    font-size: 18px
+}
+
+.hero_content{
+    margin-top: 15px;
+    margin-right: 70px;
+}
+
+#content_img{
+    width: 600px;
+    height: 300px;
+}
+
+
+
+#logo {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+#header_links {
+    display: flex;
+    margin: auto 0px auto auto;
+    font-size: 18px;
+}
+
+.header_link {
+    margin: 0px 10px;
+}
+
+#hero {
+    background-color: #1F2937;
+    height: 600px;
+}
+
+#hero_button {
+    width: 120px;
+    height: 40px;
+    font-weight: 600;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+#information{
+    font-size: 36px;
+    color: #1F2937;
+    font-weight: 900;
+    text-align: center;
+    padding: 60px 400px;
+    height: 550px;
+}
+
+.container{
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.child{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.illustration{
+    height: 200px;
+    width: 200px;
+    border: 5px solid #3882F6;
+    border-radius: 20px;
+}
+
+.illustration_text{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #1F2937;
+    width: 200px;
+    font-weight: 400;
+}
+
+.blue {
+    background-color: #3882F6;
+}
+
+.smalltext {
+    color: #E5E7EB;
+}
+
+.bigtext {
+    color: #F9FAF8;
+}
+
+#quote{
+    margin-top: 60px;
+    padding: 150px 500px;
+    height: 500px;
+    background-color: #E5E7EB;
+    font-size: 36px;
+    font-weight: 300;
+    font-size: italic;
+    color: #1F2937;
+}
+
+#quote_author{
+    text-align: right;
+    font-weight: 700;
+}
+
+#action {
+    height: 400px;
+    padding: 100px 300px;
+}
+
+#action .blue{
+    height: 200px;
+    border-radius: 10px;
+    padding: 30px 170px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+#action .blue .bigtext{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#action_button{
+    width: 120px;
+    height: 40px;
+    font-weight: 600;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 2px solid #F9FAF8;
+}
+
+footer{
+    height: 100px;
+    background-color: #1F2937;
+}
+
