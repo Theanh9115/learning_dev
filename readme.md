@@ -12,6 +12,8 @@ A personal learning repository for developing **Software Engineering skills**.
 learning-dev/
 │
 └── odin-recipes/
+│
+└── landing_page/
 ```
 
 The structure may evolve as I learn new topics.
