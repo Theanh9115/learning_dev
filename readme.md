@@ -14,9 +14,11 @@ learning-dev/
 │
 └── odin-recipes/
 │
-└── landing_page/
+└── odin_landing_page_project/
 │
-└── form/
+└── odin_form_project/
+│
+└── odin_admin_dashboard/
 ```
 
 The structure may evolve as I learn new topics.
