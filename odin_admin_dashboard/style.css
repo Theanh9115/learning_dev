@@ -3,6 +3,7 @@
     margin: 0px;
     padding: 0px;
     font-family: "roboto";
+    box-sizing: border-box;
 }
 .sidebar {
     background-color: #1892d3;
@@ -11,7 +12,7 @@
 
 .main {
     display: grid;
-    grid-template-rows: 200px 1fr;
+    grid-template-rows: auto 1fr;
 }
 
 .main-container{
@@ -22,34 +23,258 @@
 
 .menu{
     background-color: #ffffff;
+    padding: 5px 1%;
+}
+
+.menu-upper{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    padding: 0.5%;
+}
+
+.menu-upper img{
+    height: 40px;
+}
+
+.menu-right{
+    display: flex;
+    align-items: center;
+}
+
+.menu-right span{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.menu-upper .menu-right-items{
+    padding: 0px 15px;
+}
+
+.menu-upper .search-bar{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 60%;
+}
+
+#search-input{
+    font-size: 1rem;
+    flex: 1;
+    width: 80%;
+    padding: 0.5em;
+    border-radius: 15px;
+    outline: none;
+    border: 0px;
+    background-color: #e2e8f0;
+}
+
+.menu-upper svg{
+    height: 22px;
+    padding: 0px 1.5em;
+}
+
+.menu-lower{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1%;
+}
+
+.menu-lower img{
+    height: 100px;
+}
+
+.menu-lower .menu-left{
+    display: flex;
+    align-items: center;
+}
+
+.menu-lower .menu-left-items{
+    padding: 1.75em;
+}
+
+.menu-lower .menu-left-items p{
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+
+.menu-lower .menu-right-items{
+    margin: 0px 12px;
+    font-size: 1rem;
+    padding: 0.75em;
+    width: 120px;
+    color: white;
+    font-weight: 500;
+    background-color: #1992d4;
+    border: 0;
+    border-radius: 30px;
+
 }
 
 .main-board{
     background-color: #e1e8f0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    width: 100%;
+    padding: 2% 1%;
+}
+
+.main-board h2{
+    padding: 0.5em 0;
+}
+
+.main-board-left{
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-board-right{
+    flex: 0.25 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.projects{
+    max-height: 1000px;
     display: grid;
-    grid-template-areas: "box1 box2" "box1 box3";
+    gap: 1em;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
+    justify-content: center;
+}
+
+.project-card{
+    background-color: orange;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px lightgrey;
+
+}
+
+.card-content{
+    margin-left: 10px;
+    background-color: white;
+    height: 100%;
+    border-radius: 0px 10px 10px 0px;
+    padding: 4%;
+}
+
+.card-content h3{
+    padding-bottom: 3px;
+}
+
+.card-content p{
+    font-size: 0.9rem;
+    color: #6a6b69;
+    padding-bottom: 1.5em;
+}
+
+.card-content div{
+    text-align: right;
+}
+
+.card-content svg{
+    height: 22px;
+    padding: 0px 0.7em;
+}
+
+.annoucements{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.trending{
+    display: flex;
+    flex-direction: column;
+}
+
+.annoucements-card{
+    background-color: white;
+    flex: 1;
+    border-radius: 10px;
+    padding: 7%;
+    box-shadow: 3px 3px 10px lightgrey;
+}
+
+.trending-card{
+    background-color: white;
+    flex: 1;
+    border-radius: 10px;
+    padding: 7%;
+    display: grid;
+    grid-auto-rows: 1fr;
+    box-shadow: 3px 3px 10px lightgrey;
+}
+
+.trending-card img{
+    height: 40px;
+}
+
+.trending-items{
+    display: flex;
+    align-items: center;
+    padding: 1% 0;
+}
+
+.trending-projects{
+    color: #6a6b69;
+}
+
+.trending-names{
+    padding: 5px 20px;
+}
+
+.profile-address{
+    font-size: 0.9rem;
+    padding-bottom: 3px;
+}
+
+
+
+.annoucements-items{
+    padding: 0.5em;
+}
+
+.annoucements-items h3{
+    font-size: 1rem;
+}
+
+.annoucements-items p{
+    font-size: 0.85rem;
+    color: #6a6b69;
+}
+
+.main-board h2{
+    font-weight: 500;
+    font-size: 1.5rem;
 }
 
 .dashboard-header {
     display: flex;
     align-items: center;
-    padding: 15px;
+    padding: 1em;
 }
 
 .sidebar-nav{
-    padding: 15px;
+    padding: 1em;
 }
 
 .nav-item{
-    padding: 10px;
-    font-size: 20px;
+    padding: 0.5em;
+    font-size: 1.25rem;
     display: flex;
     align-items: center;
 }
 .nav-item svg{
     fill: #ffffff;
-    height: 20px;
-    padding: 5px;
+    height: 40px;
+    padding: 0.4em;
 }
 
 .nav-item a{
@@ -66,7 +291,7 @@
 }
 
 .dashboard-header h1{
-    padding: 15px;
+    padding: 0.5em;
 }
 
 
