@@ -21,6 +21,8 @@ learning-dev/
 └── odin_admin_dashboard/
 │
 └── odin_rock_paper_scissors/
+│
+└── odin_etch_a_sketch/
 ```
 
 The structure may evolve as I learn new topics.
