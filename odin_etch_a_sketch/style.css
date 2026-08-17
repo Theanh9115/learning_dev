@@ -1,21 +1,22 @@
 * {
-    margin: 0px;
-    padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
-.setting{
-    width: 100vw;
-    display: flex;
-    justify-content: center;
+.setting {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
 }
 
-.container{
-    display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
-    height: 100vh;
+.container {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(16, 1fr);
+  height: 100vh;
 }
 
-.child:hover{
-    background-color: black;
+.child {
+  background-color: black;
+  opacity: 0;
 }
