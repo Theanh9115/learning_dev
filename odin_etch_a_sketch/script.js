@@ -1,29 +1,31 @@
+// increase an opacity of a childdiv
+function increaseOpacity(childDiv) {
+  console.log("test test");
+  let opacity = Number(childDiv.style.opacity) || 0;
+  if (opacity < 1) {
+    childDiv.style.opacity = opacity + 0.1;
+  }
+}
+
+// create grids with size for a container
+function createGrids(containerDiv, gridSize) {
+  for (let i = 0; i < gridSize * gridSize; i++) {
+    let childDiv = document.createElement("div");
+    childDiv.classList.add("child");
+    containerDiv.appendChild(childDiv);
+    containerDiv.setAttribute(
+      "style",
+      `grid-template-columns: repeat(${gridSize}, 1fr); grid-template-rows: repeat(${gridSize}, 1fr)`,
+    );
+    childDiv.addEventListener("mouseenter", () => increaseOpacity(childDiv));
+  }
+}
+
+// Main
 let containerDiv = document.querySelector(".container");
 
-let gridSize = 16;
-
-let isHolding = false;
-document.addEventListener("mousedown", () => (isHolding = true));
-document.addEventListener("mouseup", () => (isHolding = false));
-
-let childOpacity = new Map();
-for (let i = 0; i < gridSize * gridSize; i++) {
-  let childDiv = document.createElement("div");
-  childOpacity.set(childDiv, 0);
-  childDiv.addEventListener("mouseenter", function () {
-    if (isHolding) {
-      if (childOpacity.get(childDiv) <= 0.9)
-        childOpacity.set(childDiv, childOpacity.get(childDiv) + 0.1);
-      childDiv.setAttribute("style", `opacity: ${childOpacity.get(childDiv)}`);
-    }
-  });
-  childDiv.classList.add("child");
-  containerDiv.appendChild(childDiv);
-  containerDiv.setAttribute(
-    "style",
-    `grid-template-columns: repeat(${gridSize}, 1fr); grid-template-rows: repeat(${gridSize}, 1fr)`,
-  );
-}
+// create default grids
+createGrids(containerDiv, 16);
 
 let settingBtn = document.querySelector("#setting-button");
 settingBtn.addEventListener("click", function () {
@@ -34,27 +36,7 @@ settingBtn.addEventListener("click", function () {
   } else {
     // Clear and reassign
     containerDiv.replaceChildren();
-
-    for (let i = 0; i < gridSize * gridSize; i++) {
-      let childDiv = document.createElement("div");
-      childOpacity.set(childDiv, 0);
-      childDiv.addEventListener("mouseenter", function () {
-        if (isHolding) {
-          if (childOpacity.get(childDiv) <= 0.9)
-            childOpacity.set(childDiv, childOpacity.get(childDiv) + 0.1);
-          childDiv.setAttribute(
-            "style",
-            `opacity: ${childOpacity.get(childDiv)}`,
-          );
-        }
-      });
-      childDiv.classList.add("child");
-      containerDiv.appendChild(childDiv);
-    }
-    containerDiv.setAttribute(
-      "style",
-      `grid-template-columns: repeat(${gridSize}, 1fr); grid-template-rows: repeat(${gridSize}, 1fr)`,
-    );
+    createGrids(containerDiv, gridSize);
   }
   console.log(containerDiv.querySelectorAll("div").length);
 });
