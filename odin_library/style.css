@@ -1,0 +1,15 @@
+.books {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+form {
+  margin: 10px 0px;
+}
+
+.child {
+  width: 200px;
+  flex: 0 0 200px;
+  border: 2px solid black;
+}
