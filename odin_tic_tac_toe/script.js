@@ -6,6 +6,7 @@ class Player {
 }
 
 const GameController = (() => {
+  // IIFE GameBoard contains game logics, placing move.
   const GameBoard = (() => {
     let gameBoard = Array.from({ length: 3 }, () => Array(3).fill(null));
 
@@ -86,50 +87,80 @@ const GameController = (() => {
       else return [false, "Continue..."];
     };
 
-    const resetBoard = () => {
+    const resetInternalBoard = () => {
       gameBoard = Array.from({ length: 3 }, () => Array(3).fill(null));
     };
 
-    const placeMove = (player) => {
-      let r = Number(prompt("What is the row?"));
-      let c = Number(prompt("What is the column?"));
+    const resetUIBoard = () => {
+      let gridChildren = document.querySelectorAll(".grid-child");
+      gridChildren.forEach((child) => {
+        child.textContent = "";
+      });
+    };
+
+    const placeMove = (player, r, c) => {
+      // Gameboard can't place a postion that already taken (handle by UI)
       if (gameBoard[r][c] != null) {
-        placeMove(player, r, c);
+        throw Exception("UI is not handled correctly!");
       } else {
         gameBoard[r][c] = player.name;
         let result = checkGameEnd(player);
+        // If game end resets
         if (result[0]) {
           alert(result[1]);
+          resetInternalBoard();
+          resetUIBoard();
         }
       }
       console.log(gameBoard);
     };
 
-    return { resetBoard, placeMove, checkGameEnd };
+    return {
+      resetInternalBoard,
+      resetUIBoard,
+      placeMove,
+      checkGameEnd,
+      getGameboard,
+    };
   })();
 
-  let p1 = new Player("Player 1");
-  let p2 = new Player("Player 2");
+  // Create two players
+  let p1 = new Player("X");
+  let p2 = new Player("O");
 
   const initializeGame = () => {
     p1.turn = true;
     p2.turn = false;
-    GameBoard.resetBoard();
+    GameBoard.resetInternalBoard();
+    GameBoard.resetUIBoard();
   };
 
   const playGame = () => {
     initializeGame();
-    while (!GameBoard.checkGameEnd(p1)[0] || !GameBoard.checkGameEnd(p2)[0]) {
-      console.log("in the loop");
-      if (p1.turn) {
-        GameBoard.placeMove(p1);
-      } else {
-        GameBoard.placeMove(p2);
-      }
-      p1.turn = !p1.turn;
-      p2.turn = !p2.turn;
-    }
+    let gridChildren = document.querySelectorAll(".grid-child");
+    gridChildren.forEach((child) => {
+      child.addEventListener("click", () => {
+        if (child.textContent == "") {
+          if (p1.turn) {
+            child.textContent = p1.name;
+            let r = Number(child.getAttribute("id")[1]);
+            let c = Number(child.getAttribute("id")[3]);
+            GameBoard.placeMove(p1, r, c);
+            p1.turn = !p1.turn;
+            p2.turn = !p2.turn;
+          } else {
+            child.textContent = p2.name;
+            let r = Number(child.getAttribute("id")[1]);
+            let c = Number(child.getAttribute("id")[3]);
+            GameBoard.placeMove(p2, r, c);
+            p1.turn = !p1.turn;
+            p2.turn = !p2.turn;
+          }
+        }
+      });
+    });
   };
+
   return { playGame };
 })();
 

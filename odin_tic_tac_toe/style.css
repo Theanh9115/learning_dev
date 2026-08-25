@@ -4,12 +4,16 @@
   grid-auto-rows: 200px;
   grid-auto-columns: 200px;
   justify-content: center;
+  align-content: center;
+  font-size: 10rem;
 }
 
 .grid-child {
+  box-sizing: border-box;
   height: 200px;
   width: 200px;
   border: 2px solid black;
+  text-align: center;
 }
 
 .grid-child:hover {
