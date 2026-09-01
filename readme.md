@@ -23,6 +23,14 @@ learning-dev/
 └── odin_rock_paper_scissors/
 │
 └── odin_etch_a_sketch/
+│
+└── odin_calculator/
+│
+└── odin_library/
+│
+└── odin_tic_tac_toe/
+│
+└── odin_weather_app/
 ```
 
 The structure may evolve as I learn new topics.
