@@ -1,46 +1,4 @@
-async function getGeoCoding(city, apiKey) {
-  try {
-    const response = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`,
-    );
-    const cityGeoCoding = await response.json();
-    return [cityGeoCoding[0]["lat"], cityGeoCoding[0]["lon"]];
-  } catch {
-    console.log("Error in fetching city geocoding!");
-  }
-}
-
-async function getWeatherData(city, apiKey) {
-  try {
-    const geoLocation = await getGeoCoding(city, apiKey);
-    const lattitude = geoLocation[0];
-    const longtitude = geoLocation[1];
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lattitude}&lon=${longtitude}&appid=${apiKey}`,
-    );
-    const responseData = await response.json();
-    return responseData;
-  } catch {
-    console.log("Something is wrong when fetching weather data!");
-  }
-}
-
-let weatherObj;
-let city = "New York";
 const apiKey = "28ed9226662500eeaab2ae9f2dc3f341";
-getWeatherData(city, apiKey).then((data) => {
-  weatherObj = new Weather(
-    city,
-    data.main.temp,
-    data.main.feels_like,
-    data.main.temp_min,
-    data.main.temp_max,
-    data.main.humidity,
-    data.weather[0].description,
-  );
-  console.log(data);
-  console.log(weatherObj.description);
-});
 
 class Weather {
   constructor(city, temp, feelsLike, tempMin, tempMax, humidity, description) {
@@ -53,3 +11,71 @@ class Weather {
     this.city = city;
   }
 }
+
+// Get location of a city
+async function getGeoCoding(city, apiKey) {
+  try {
+    const response = await fetch(
+      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`,
+    );
+    const cityGeoCoding = await response.json();
+    return [cityGeoCoding[0]["lat"], cityGeoCoding[0]["lon"]];
+  } catch {
+    console.log("Error in fetching city geocoding!");
+  }
+}
+
+// get weather data using latitude longtitude
+async function getWeatherData(city, apiKey) {
+  let cityLocation = await getGeoCoding(city, apiKey);
+  let latitude = cityLocation[0];
+  let longitude = cityLocation[1];
+  try {
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`,
+    );
+    const responseData = await response.json();
+    return responseData;
+  } catch {
+    console.log("Something is wrong when fetching weather data!");
+  }
+}
+
+async function main() {
+  let cityForm = document.querySelector("#city-form");
+  let cityName = document.querySelector("#city-name");
+  let weatherDescription = document.querySelector("#weather-description");
+  let weatherTemp = document.querySelector("#weather-temp");
+  let weatherTempMin = document.querySelector("#weather-temp-min");
+  let weatherTempMax = document.querySelector("#weather-temp-max");
+  let weatherHumidity = document.querySelector("#weather-humidity");
+
+  let city = "New York";
+  cityName.textContent = city;
+
+  getWeatherData(city, apiKey).then((data) => {
+    console.log(data);
+    weatherDescription.textContent = data.weather[0].description;
+    weatherTemp.textContent = data.main.temp;
+    weatherTempMin.textContent = data.main.temp_min;
+    weatherTempMax.textContent = data.main.temp_max;
+    weatherHumidity.textContent = data.main.humidity;
+  });
+
+  cityForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    city = new FormData(cityForm);
+    city = city.get("city-input");
+    cityName.textContent = city;
+    getWeatherData(city, apiKey).then((data) => {
+      console.log(data);
+      weatherDescription.textContent = data.weather[0].description;
+      weatherTemp.textContent = data.main.temp;
+      weatherTempMin.textContent = data.main.temp_min;
+      weatherTempMax.textContent = data.main.temp_max;
+      weatherHumidity.textContent = data.main.humidity;
+    });
+  });
+}
+
+main();
